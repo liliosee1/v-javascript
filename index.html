@@ -98,6 +98,23 @@
     </div>
 
   </section>
+     <!-- JavaScript -->
+  <script>
+
+    // Select Elements
+    const taskForm = document.getElementById("taskForm");
+    const taskInput = document.getElementById("taskInput");
+    const dateInput = document.getElementById("dateInput");
+    const taskContainer = document.getElementById("taskContainer");
+    const errorMessage = document.getElementById("errorMessage");
+
+
+    // Get tasks from local storage
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+
+    // Load tasks when page refreshes
+    window.addEventListener("DOMContentLoaded", displayTasks);
 
 
 
@@ -106,6 +123,8 @@
 
 
 
+
+</script>
 
 </body>
 </html>
