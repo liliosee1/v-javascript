@@ -115,6 +115,85 @@
 
     // Load tasks when page refreshes
     window.addEventListener("DOMContentLoaded", displayTasks);
+        // Form Submit
+    taskForm.addEventListener("submit", function (e) {
+
+      e.preventDefault();
+
+      const taskName = taskInput.value.trim();
+      const dueDate = dateInput.value;
+
+
+      // Validation
+      if (taskName === "" || dueDate === "") {
+
+        errorMessage.textContent =
+          "Please enter task name and due date.";
+
+        errorMessage.classList.remove("hidden");
+
+        return;
+      }
+
+
+      // Hide error if valid
+      errorMessage.classList.add("hidden");
+
+
+      // Create task object
+      const task = {
+        id: Date.now(),
+        name: taskName,
+        date: dueDate
+      };
+
+
+      // Add to array
+      tasks.push(task);
+
+
+      // Save to local storage
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+
+
+      // Display tasks
+      displayTasks();
+
+
+      // Clear inputs
+      taskInput.value = "";
+      dateInput.value = "";
+
+    });
+
+
+
+    // Display Tasks Function
+    function displayTasks() {
+
+      // Clear old tasks
+      taskContainer.innerHTML = "";
+
+
+      // Loop through tasks
+      tasks.forEach(function (task) {
+
+        // Create card
+        const taskCard = document.createElement("div");
+
+        taskCard.className =
+          "bg-white p-5 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300";
+
+
+        taskCard.innerHTML = `
+          <h4 class="text-xl font-bold mb-3">
+            ${task.name}
+          </h4>
+
+          <p class="text-gray-600 mb-4">
+            Due Date: ${task.date}
+          </p>
+
 
 
 
