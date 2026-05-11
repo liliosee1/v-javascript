@@ -8,10 +8,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gray-250 min-h-screen">
+<body class="bg-gray-250 min-h-screen flex flex-col">
 
   <!-- Navbar -->
-  <nav class="bg-red-950 text-white shadow-lg">
+  <nav class="bg-red-950 text-white shadow-lg sticky  top-0 z-50 ">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
 
       <h1 class="text-2xl font-bold">
@@ -97,7 +97,7 @@
     </div>
 
   </section>
-<footer class="bg-black text-white mt-3">
+<footer class="bg-black text-white mt-auto">
   <div class="max-w-6xl mx-auto px-6 py-8 text-center">
 
     <h3 class="text-xl font-bold mb-2">
@@ -163,19 +163,23 @@
         date: dueDate
       };
 
+
       // Add to array
       tasks.push(task);
 
 
       // Save to local storage
       localStorage.setItem("tasks", JSON.stringify(tasks));
+      alert("Task added !");
+// Display tasks
+displayTasks();
 
-      // Display tasks
-      displayTasks();
+// Success alert
+alert("Task added successfully!");
 
-      // Clear inputs
-      taskInput.value = "";
-      dateInput.value = "";
+// Clear inputs
+taskInput.value = "";
+dateInput.value = "";
 
     });
 
@@ -218,6 +222,8 @@
 
     }
 
+
+
     // Delete Task Function
     function deleteTask(id) {
 
@@ -229,7 +235,7 @@
 
       // Update local storage
       localStorage.setItem("tasks", JSON.stringify(tasks));
-
+alert("Task deleted !");
 
       // Re-display tasks
       displayTasks();
